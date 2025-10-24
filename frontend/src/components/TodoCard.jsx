@@ -25,7 +25,7 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
 
   useEffect(() => {
     setCardColor(todo.completed ? '#6c6c6c' : priorityColor);
-  },[]);
+  }, [todo.completed, priorityColor]);
 
   useEffect(() => {
     if (open) {
@@ -70,7 +70,7 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
 
   return (
     <>
-      <Card 
+      <Card
         sx={{
           backgroundColor: '#313131',
           boxShadow: '5px 5px 8px rgba(0, 0, 0, 0.5)',
@@ -78,53 +78,53 @@ const TodoCard = ({ todo, onUpdate, onDelete }) => {
           border: '1px solid',
           borderRadius: '5px',
           borderColor: cardColor,
-          overflow: 'hidden',  
-        }} 
+          overflow: 'hidden',
+        }}
         onClick={handleClickOpen} style={{ cursor: 'pointer' }}
       >
         <CardContent sx={{ padding: 0 }}>
-            <Box
+          <Box
+            sx={{
+              width: '100%',
+              height: 40,
+              backgroundColor: cardColor,
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Typography variant="h6"
               sx={{
-                width: '100%',
-                height: 40,
-                backgroundColor: cardColor,
-                color: '#ffffff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                px: 2,
+                fontWeight: 'bold',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+              }}>
+              {todo.title}
+            </Typography>
+          </Box>
+          <Box sx={{ mx: 1, my: 3 }}>
+            <Typography
+              sx={{
+                color: '#b5b5b5',
+                px: 1,
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
               }}
+              variant="body2"
+              color="textSecondary"
             >
-              <Typography variant="h6" 
-                sx={{
-                  px: 2,
-                  fontWeight: 'bold',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis'
-                }}>
-                {todo.title}
+              {todo.description}
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', width: '100%' }}>
+              <Typography sx={{ color: '#b5b5b5', px: 1 }} variant="caption" color="textSecondary">
+                Created on: {formattedDate}
               </Typography>
             </Box>
-            <Box sx={{ mx: 1, my: 3 }}>
-              <Typography 
-                sx={{
-                  color: '#b5b5b5',
-                  px: 1,
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis'
-                }} 
-                variant="body2" 
-                color="textSecondary"
-              >
-                {todo.description}
-              </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', width: '100%' }}>
-                <Typography sx={{ color: '#b5b5b5', px: 1 }} variant="caption" color="textSecondary">
-                  Created on: {formattedDate}
-                </Typography>
-              </Box>
-            </Box>
+          </Box>
         </CardContent>
       </Card>
 

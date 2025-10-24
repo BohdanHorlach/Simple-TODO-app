@@ -6,7 +6,7 @@ class TodoController {
       const todos = await todoService.getAll();
       res.json(todos);
     } catch (err) {
-      res.status(500).json({ message: 'Ошибка при получении задач', error: err.message });
+      res.status(500).json({ message: 'Error fetching todos', error: err.message });
     }
   }
 
@@ -16,7 +16,7 @@ class TodoController {
       const todo = await todoService.create(title, description, priority);
       res.status(201).json(todo);
     } catch (err) {
-      res.status(400).json({ message: 'Ошибка при создании задачи', error: err.message });
+      res.status(400).json({ message: 'Error creating todo', error: err.message });
     }
   }
 
