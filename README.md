@@ -1,4 +1,4 @@
-#Simple TODO App
+# Simple TODO App
 
 Simple TODO App — a web application for managing personal tasks.
 
@@ -10,7 +10,7 @@ Simple TODO App — a web application for managing personal tasks.
 Technologies used: React, Express, MongoDB, Git.
 
 
-##Visualization
+## Visualization
 
 Create form:
 ![Create form](assets/create_form.jpeg)
